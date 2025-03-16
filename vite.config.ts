@@ -73,6 +73,12 @@ const gitInfo = getGitInfo();
 
 export default defineConfig((config) => {
   return {
+    server: {
+      allowedHosts: "all", // Tüm hostlara izin verir
+      host: true,          // Vite'yi dışarıdan erişilebilir yapar
+      port: 5173,          // Varsayılan port (gerekirse değiştirin)
+      strictPort: true     // Belirtilen portu kullanmasını zorunlu kılar
+    },
     define: {
       __COMMIT_HASH: JSON.stringify(gitInfo.commitHash),
       __GIT_BRANCH: JSON.stringify(gitInfo.branch),
