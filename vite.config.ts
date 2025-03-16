@@ -74,11 +74,20 @@ const gitInfo = getGitInfo();
 export default defineConfig((config) => {
   return {
     server: {
-      // allowedHosts: "all", // Tüm hostlara izin verir
-      allowedHosts: ['tools-bolt-m02al9-9caf5e-185-69-54-223.traefik.me'],
-      host: true,          // Vite'yi dışarıdan erişilebilir yapar
-      // port: 5173,          // Varsayılan port (gerekirse değiştirin)
-      // strictPort: true     // Belirtilen portu kullanmasını zorunlu kılar
+      host: '0.0.0.0', // Dış dünyadan erişimi aç
+      port: 5173, // Traefik yönlendirmesi için doğru portu kullan
+      strictPort: true,
+      allowedHosts: [
+        "all", // Tüm domainlere izin ver
+        "localhost",
+        "*.traefik.me" // Traefik’in rastgele oluşturduğu alan adlarına izin ver
+      ],
+      cors: true, // CORS sorunlarını önlemek için
+      hmr: {
+        protocol: 'wss', // Hot Module Reload için WebSocket protokolünü kullan
+        host: process.env.VITE_HMR_HOST || 'tools-bolt-m02al9-9caf5e-185-69-54-223.traefik.me',
+        port: 5173,
+      },
     },
     define: {
       __COMMIT_HASH: JSON.stringify(gitInfo.commitHash),
