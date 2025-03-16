@@ -78,14 +78,15 @@ export default defineConfig((config) => {
       port: 5173, // Traefik yönlendirmesi için doğru portu kullan
       strictPort: true,
       allowedHosts: [
-        "*", // Tüm domainlere izin ver
+        "all", // Tüm domainlere izin ver
         "localhost",
-        "*.turnuvam.net" // Traefik’in rastgele oluşturduğu alan adlarına izin ver
+        "*.traefik.me", // Traefik’in rastgele oluşturduğu alan adlarına izin ver
+        "editor.turnuvam.net" // Özel alan adını açıkça belirt
       ],
       cors: true, // CORS sorunlarını önlemek için
       hmr: {
         protocol: 'wss', // Hot Module Reload için WebSocket protokolünü kullan
-        host: process.env.VITE_HMR_HOST || 'tools-bolt-m02al9-9caf5e-185-69-54-223.traefik.me',
+        host: process.env.VITE_HMR_HOST || 'editor.turnuvam.net',
         port: 5173,
       },
     },
