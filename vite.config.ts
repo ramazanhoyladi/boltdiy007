@@ -78,7 +78,7 @@ export default defineConfig((config) => {
       port: 5173, // Traefik yönlendirmesi için doğru portu kullan
       strictPort: true,
       allowedHosts: [
-        "all", // Tüm domainlere izin ver
+        "*", // Tüm domainlere izin ver
         "localhost",
         "*.turnuvam.net" // Traefik’in rastgele oluşturduğu alan adlarına izin ver
       ],
