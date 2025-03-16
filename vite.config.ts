@@ -80,7 +80,7 @@ export default defineConfig((config) => {
       allowedHosts: [
         "all", // Tüm domainlere izin ver
         "localhost",
-        "*.traefik.me" // Traefik’in rastgele oluşturduğu alan adlarına izin ver
+        "*.turnuvam.net" // Traefik’in rastgele oluşturduğu alan adlarına izin ver
       ],
       cors: true, // CORS sorunlarını önlemek için
       hmr: {
